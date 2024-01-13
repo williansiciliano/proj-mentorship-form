@@ -1,0 +1,246 @@
+@charset "UTF-8";
+
+:root{
+	--cor01: #fff; /* form bg, button color */
+	--cor02:#000;
+	--cor03:#535971; /* header, legend, footer */
+	--cor04:#FF5374; /* button */
+	--cor05:#EFEFEF;
+	--cor06:#4E4958;/* label */
+	--cor07: #C1BCCC; /* label span */
+	--cor08: #FAFAFC; /* bg do input */
+	--cor09: #E6E6F0; /* borda do input  */
+	--cor10: #726c7e; /* texto do input */
+	--cor11: #f7355c; /* HOVER button */
+	--cor12: #5c6aa3; /* box-shadow focus-visible input */
+}
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* estabelecimento das fontes */
+body, label, p, span, input{
+	font-family: 'Poppins', sans-serif;
+}
+
+h1, h2, legend, button{
+	font-family: 'Staatliches', sans-serif;
+}
+/* --- */
+
+body{
+	min-height: 100vh;
+	min-height: 100svh;
+	min-height: 100dvh;
+	background-color: var(--cor05);
+	position: relative;
+}
+
+body::before{
+	content: '';
+	background-color: var(--cor03);
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+	width: 100%;
+	height: 436px;
+	z-index: -1;
+}
+
+div.page{
+	width: 750px;
+	margin: auto;
+}
+
+header{
+	width: 417px;
+}
+
+h1{
+	padding-top: 140px;
+	font-size: 48px;
+	font-weight: 400;
+}
+
+h2{
+	font-size: 20px;
+	line-height: 34px;
+	font-weight: 400;
+}
+
+header p {
+	margin-top: 18px;
+	font-size: 20px;
+	font-weight: 400;
+}
+
+form{
+	background-color: var(--cor01);
+	margin-top: 40px;
+	padding: 64px;
+	border-radius: 20px 20px 0px 0px;
+	display: flex;
+	flex-direction: column;
+	gap: 48px;
+}
+
+fieldset{
+	border: none;
+}
+
+.fieldset-wrapper{
+	display: flex;
+	flex-direction: column;
+	gap: 20px
+}
+
+.fieldset-wrapper legend{
+	font-size: 24px;
+	border-bottom: 1px solid var(--cor09);
+	padding-bottom: 8px;
+	/* margin-bottom: 24px; /*  32px (figma) - 8px (de gap já existente) RETIRADO POR QUESTÃO DE REGRA DE ESPAÇAMENTO DE UI */
+}
+
+.fieldset-wrapper h2{
+	margin-bottom: -12px;
+}
+
+.input-wrapper{
+	display: flex;
+	flex-direction: column;
+}
+
+.input-wrapper label{
+	font-size: 14px;
+	margin-bottom: 8px;
+	display: flex;
+	align-items: center;
+	
+}
+
+.input-wrapper label span{
+	font-size: 12px;
+	margin-left: 9px;
+}
+
+form input{
+	background-color: var(--cor08);
+	height: 56px;
+	border-radius: 8px;
+	border: 1px solid var(--cor09);
+	padding: 0 16px;
+	font-size: 16px;
+	color: var(--cor10);
+}
+
+form input:focus-visible{
+	outline: 1px solid var(--cor03);
+	box-shadow: 0 0 5px var(--cor12), 0 0 10px var(--cor12);
+}
+
+h1, header p{
+	color: var(--cor01);
+}
+
+h2, legend{
+	color: var(--cor03);
+}
+
+label{
+	color: var(--cor06);
+}
+
+label span{
+	color: var(--cor07);
+}
+
+.col-2, .col-3{
+	display: flex;
+	flex-direction: row;
+}
+
+.col-2{
+	gap: 22px;
+	/* width: 100%; */
+}
+
+.col-2 .input-wrapper{
+	width: 100%;
+}
+
+.col-3 .input-wrapper:nth-child(1){
+	width: 100%;
+	margin-right: 32px;
+}
+
+.col-3 .input-wrapper:nth-child(2){
+	margin-right: 10px;
+}
+
+/* :is(.col-2, .col-3) .input-wrapper{
+	width: 100%;
+} */
+
+:is(.col-2, .col-3) .input-wrapper input{
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	-ms-appearance: none;
+}
+
+footer{
+	height: 160px;
+	background-color: #535971;
+	border-radius: 0 0 20px 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	margin-bottom: 140px;
+	padding: 0 70px;
+}
+
+footer #btn-salvar{
+	padding: 15px 40px;
+	font-size: 20px;
+	color: var(--cor01);
+	font-family: 'Staatliches', sans-serif;
+	line-height: 26px;
+	background-color: var(--cor04);
+	border: none;
+	border-radius: 8px;
+	width: 100%;
+}
+
+footer #btn-salvar:hover{
+	cursor: pointer;
+	background-color: var(--cor11);
+}
+
+footer a{
+	color: var(--cor01);
+}
+
+footer a:visited{
+	color: var(--cor01);
+}
+
+footer a:hover{
+	text-decoration: none;
+	color: var(--cor01);
+	text-shadow: 0 0 5px var(--cor04), 0 0 10px var(--cor04);
+}
+
+/* OBS: OS INPUTS DE DATA E HORA FORAM DEIXADOS COMO TYPE="DATE" E TYPE="TIME" MESMO PARA TER OS BOTÕES DE POPUP DE DATA E HORA E AUXILIAR O USUÁRIO A PREENCHER (DIFERENTE DO QUE PARECER SER PELO PROJETO NO FIGMA) */
+
+/* Validação */
+
+form input:invalid{
+	outline: 1px solid #f00;
+}
+
+/* --- */
